@@ -63,7 +63,10 @@ class ProxyServer:
                 else:
                     self.on_recv()
             except socket.error as e:
-                self.on_close()
+                # FIRST FIX
+                # Calling on_close() self.channel was empty caued the crash
+                #self.on_close()
+                print(e)
 
     def on_accept(self):
         clientsock, clientaddr = self.server.accept()
